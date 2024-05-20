@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="icon.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="converter hide2" id="converter">
+        <center>
+        <h3 style="margin: 10px;">Height:</h3>
+        <form oninput="cm.value=(Math.round((((parseInt(foot.value)*12)+parseInt(inch.value))*2.54)*100)/100)">
+        <input id="foot" class="foot" name="foot" type="number" required value="0">&nbsp;Foot&nbsp;<input id="inch" class="inch" name="inch" type="number" required value="0">&nbsp;Inch&nbsp;&rarr;&nbsp;<output id="cm" name="cm" for="foot inch" ></output>&nbsp;cm
+        </form>
+        <h3 style="margin: 10px;">Weight:</h3>
+        <form oninput="kg.value=(Math.round((parseInt(pound.value)*0.454)*100))/100">
+        <input id="pound" class="pound" name="pound" type="number" required value="0">&nbsp;pound&nbsp;&rarr;&nbsp;<output id="kg" name="kg" for="pound" ></output>&nbsp;kg
+        </form>
+        </center>
+    </div>
+    <div class="body">
+        <h1>BMI CALCULATOR</h1>
+        <button type="submit" class="unit">UNIT CONVERTER</button>
+        <div class="container">
+            <div class="inputbox">
+                <form style="text-align: center;" id="myform">
+                    Date of Birth:
+                    <input type="date" id="dob" name="dob" required>
+                    <br><br>
+                    Gender:
+                    <input type="radio" name="gender" value="male" id="male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" value="female" id="female" required>
+                    <label for="female">Female</label><br><br>
+                    Height:
+                    <input id="height" name="height" type="number" placeholder="in centemeter" required><br><br>
+                    Weight:
+                    <input id="weight" name="weight" type="number" placeholder="in Kg" required>
+                </form>
+                <div class="buttons">
+                    <button class="submit" id="calculate">Calculate</button>
+                    <button class="clear" id="clearbox">Clear</button>
+                </div>
+                <div class="alart hide" id="alart">Fill all the box.Enter a valid details.</div>
+            </div>
+            <div class="result">
+                <h2>RESULT</h2>
+                <div class="scale">
+                    <div class="arrow" id="arrow">
+                        <div class="circle" style="height: 20px; width: 20px; border-radius: 50%; z-index: 1000;"></div>
+                        <div class="line" style="height: 50%; width: 5px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="resultdata hide">
+                    <p>BMI:<span id="bminumber">19 kg/m<sup>2</sup></span></p><span id="bmicondition">(NORMAL)</span><span style="font-size: 12px;">(Please see the full report below)</span>
+                </div>
+            </div>
+            <div class="information">
+                <h2>INFORMATION</h2>
+                <p style="margin: 3px; font-size: 15px; font-weight: bold;">BMI table for adults</p>
+                <table class="table">
+                    <tr>
+                        <th>Classification</th>
+                        <th>BMI Range</th>
+                    </tr>
+                    <tr>
+                        <td>Severe Thinness</td>
+                        <td> &lt;16 </td>
+                    </tr>
+                    <tr>
+                        <td>Moderate Thinness</td>
+                        <td> 16-17 </td>
+                    </tr>
+                    <tr>
+                        <td>Mild Thinness</td>
+                        <td>17-18.4</td>
+                    </tr>
+                    <tr>
+                        <td>Normal</td>
+                        <td>18.4-25</td>
+                    </tr>
+                    <tr>
+                        <td>Overweight</td>
+                        <td>25-30</td>
+                    </tr>
+                    <tr>
+                        <td>Obese class I</td>
+                        <td>30-35</td>
+                    </tr>
+                    <tr>
+                        <td>Obese class II</td>
+                        <td>35-40</td>
+                    </tr>
+                    <tr>
+                        <td>Obese class III</td>
+                        <td>&gt;40</td>
+                    </tr>
+                </table>
+                <table class="list">
+                    <tr>
+                        <td>
+                            <div
+                                style="height: 15px; width: 15px; background-color: rgb(201, 85, 85); border-radius: 50%;display: inline-block;">
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;Underweigt(&lt;18.4)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div
+                                style="height: 15px; width: 15px; background-color: green; border-radius: 50%;display: inline-block;">
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;Normal(18.4-25)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div
+                                style="height: 15px; width: 15px; background-color: yellow; border-radius: 50%;display: inline-block;">
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;Overweight(25-39.9)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div
+                                style="height: 15px; width: 15px; background-color: red; border-radius: 50%;display: inline-block;">
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;Obesity(&gt;40)
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="report hide1">
+        <h2 style="margin: 20px;">BMI REPORT</h2>
+        <table class="reporttable">
+            <tr>
+                <td>1.</td>
+                <td>Date of Birth:</td>
+                <td id="date"></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Age:</td>
+                <td id="age"></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Gender:</td>
+                <td id="sex"></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Height:</td>
+                <td id="high"></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Weight:</td>
+                <td id="wigh"></td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>BMI:</td>
+                <td id="bm"></td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>Healthy BMI range:</td>
+                <td>18.4-25</td>
+            </tr>
+            <tr>
+                <td>8.</td>
+                <td>Healthy weight for height:</td>
+                <td id="idealbmi"></td>
+            </tr>
+            <tr>
+                <td>9.</td>
+                <td>BMI prime:</td>
+                <td id="prime"></td>
+            </tr>
+            <tr>
+                <td>10.</td>
+                <td>Ponderal index:</td>
+                <td id="index"></td>
+            </tr>
+            <tr>
+                <td>11.</td>
+                <td>BMI Status:</td>
+                <td id="bmstat"></td>
+            </tr>
+        </table>
+        <div class="warning">
+            <div class="overweight ">
+            <h4>Risks associated with being overweight</h4><br>
+            <p>Being overweight increases the risk of a number of serious diseases and health conditions. Below is a
+                list of said risks, according to the Centers for Disease Control and Prevention (CDC):</p><br>
+            <ul>
+                <li>High blood pressure</li>
+                <li>Type II diabetes</li>
+                <li>Coronary heart disease</li>
+                <li>Stroke</li>
+                <li>Osteoarthritis, a type of joint disease caused by breakdown of joint cartilage</li>
+                <li>Sleep apnea and breathing problems</li>
+                <li>Certain cancers (endometrial, breast, colon, kidney, gallbladder, liver)</li>
+            </ul>
+            <h4>How to reduce your BMI</h4><br>
+            <ul>
+                <li>Reduce your daily calorie intake</li>
+                <li>Avoid crash diets</li>
+                <li>Move more</li>
+                <li>Eat more fibre</li>
+            </ul>
+            </div>
+            <div class="underweight ">
+            <h4>Risks associated with being underweight</h4><br>
+            <p>Being underweight has its own associated risks, listed below:</p>
+            <ul>
+                <li>Malnutrition, vitamin deficiencies, anemia (lowered ability to carry blood vessels)</li>
+                <li>Osteoporosis, a disease that causes bone weakness, increasing the risk of breaking a bone</li>
+                <li>A decrease in immune function</li>
+                <li>Growth and development issues, particularly in children and teenagers</li>
+                <li>Potential complications as a result of surgery</li>
+                <li>Generally, an increased risk of mortality compared to those with a healthy BMI</li>
+            </ul>
+            <h4>How to increase your BMI</h4><br>
+            <ul>
+                <li>Add healthy calories</li>
+                <li>Eat more frequently</li>
+                <li>Build muscle </li>
+            </ul>
+            </div>
+            <div class="normal">
+                <h4>Benfits of healthy BMI</h4><br>
+                <ul>
+                    <li>Improved cardiovascular health.</li>
+                    <li>Better mental health.</li>
+                    <li>Increased muscle strength and endurance. </li>
+                    <li>Improved sleep</li>
+                    <li>Decreased the risc of heart attack,chronic diseases etc.</li>
+                    <li>Maintained blood pressure</li>
+                </ul>
+                <h4>How to maintain a healthy BMI</h4><br>
+                <ul>
+                    <li>Balanced and healthy diat</li>
+                    <li>Regular excercise</li>
+                    <li>Adequate sleep</li>
+                    <li>Manage stress</li>
+                    <li>Medical interventions</li>
+                </ul>
+            </div>
+        </div>
+        <button type="button" class="print">Print</button>
+
+    </div>
+
+</body>
+<script src="app.js" type="text/javascript"></script>
+
+</html>
